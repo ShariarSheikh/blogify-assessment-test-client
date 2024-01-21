@@ -1,3 +1,5 @@
+'use client';
+
 import { Avatar, Button, Divider } from '@nextui-org/react';
 import { AiOutlineGlobal } from 'react-icons/ai';
 import { FiMenu } from 'react-icons/fi';
@@ -44,7 +46,7 @@ const Header = () => {
           <Button
             endContent={<MdKeyboardArrowDown />}
             key={i}
-            className="py-[8px] px-[16px] rounded-[100px] bg-white border border-[#F3F4F6]"
+            className="py-[8px] px-[16px] rounded-[100px] bg-white text-[#374151] border border-[#F3F4F6]"
           >
             {action}
           </Button>
@@ -54,7 +56,7 @@ const Header = () => {
         {filtersActions.slice(2).map((action, i) => (
           <Button
             key={i}
-            className="py-[8px] px-[16px] rounded-[100px] bg-white border border-[#F3F4F6]"
+            className="py-[8px] px-[16px] rounded-[100px] bg-white text-[#374151] border border-[#F3F4F6]"
           >
             {action}
           </Button>

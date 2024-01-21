@@ -5,3 +5,9 @@
 html {
   font-family: 'Inter', sans-serif;
 }
+
+/* override default style of react-dates */
+/* .DayPicker.DayPicker_1.DayPicker__horizontal.DayPicker__horizontal_2.DayPicker__withBorder.DayPicker__withBorder_3 {
+  width: 850px !important;
+  height: 500px !important;
+} */

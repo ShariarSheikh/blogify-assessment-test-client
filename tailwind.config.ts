@@ -1,4 +1,5 @@
 import { nextui } from '@nextui-org/react';
+import scrollBarHide from 'tailwind-scrollbar-hide';
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -13,6 +14,6 @@ const config: Config = {
       }
     }
   },
-  plugins: [nextui()]
+  plugins: [nextui(), scrollBarHide]
 };
 export default config;

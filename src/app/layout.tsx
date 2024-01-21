@@ -25,6 +25,11 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
           rel="stylesheet"
         />
+
+        <link
+          href="https://api.mapbox.com/mapbox-gl-js/v1.10.1/mapbox-gl.css"
+          rel="stylesheet"
+        />
       </head>
       <body>
         <Providers>{children}</Providers>
