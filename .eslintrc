@@ -20,5 +20,5 @@
       "version": "detect"
     }
   },
-  "ignorePatterns": [".next", "public", "node_modules", ".husky"]
+  "ignorePatterns": [".next", "public", "node_modules"]
 }
