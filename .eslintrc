@@ -19,5 +19,6 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "ignorePatterns": [".next", "public", "node_modules", ".husky"]
 }
