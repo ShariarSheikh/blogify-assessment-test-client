@@ -17,6 +17,7 @@ import { useDetectClickOutside } from 'react-detect-click-outside';
 import { BiSearch } from 'react-icons/bi';
 import { CiCircleMinus } from 'react-icons/ci';
 import { GoPlusCircle } from 'react-icons/go';
+import { IoIosCloseCircle } from 'react-icons/io';
 import { IoLocationOutline } from 'react-icons/io5';
 //---------------------------------------------------------------------
 type SearchBoxOpenWithType =
@@ -37,7 +38,7 @@ interface SearchBoxOpenWithState {
 const SearchBar = () => {
   const [searchBoxOpenWith, setSearchBoxOpenWith] =
     useState<SearchBoxOpenWithState>({
-      isOpen: true,
+      isOpen: false,
       openWith: '',
       openSelectionBox: false
     });
@@ -289,7 +290,7 @@ const SearchInputBox = (props: SearchInputBoxProps) => {
       }}
       className="h-screen overflow-hidden absolute left-0 right-0 max-w-[100vw] top-[0px] w-full bg-transparent z-50 transition-all duration-150"
     >
-      <div className="h-[169px]">
+      <div className="h-[160px]">
         <div className="w-full max-w-[850px] h-[80px] max-h-[80px] mx-auto flex space-x-6 justify-center items-center bg-white">
           <h2 className="font-semibold">Stays</h2>
           <h2 className="font-normal">Experiences</h2>
@@ -315,7 +316,18 @@ const SearchInputBox = (props: SearchInputBoxProps) => {
               <div className="w-full h-[66px] pl-4 flex flex-col items-start justify-center">
                 <h2 className="text-[12px] font-medium">Where</h2>
                 {filterOptions.location ? (
-                  <h1>{filterOptions.location}</h1>
+                  <div className="flex items-center justify-between">
+                    <h1>{filterOptions.location}</h1>
+                    <IoIosCloseCircle
+                      onClick={() =>
+                        setFilterOptions((prevState) => ({
+                          ...prevState,
+                          location: ''
+                        }))
+                      }
+                      className="w-[20px] h-[20px] cursor-pointer"
+                    />
+                  </div>
                 ) : (
                   <h1>Map Area</h1>
                 )}

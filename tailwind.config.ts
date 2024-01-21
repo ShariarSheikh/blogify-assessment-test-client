@@ -1,4 +1,5 @@
 import { nextui } from '@nextui-org/react';
+//@ts-ignore
 import scrollBarHide from 'tailwind-scrollbar-hide';
 import type { Config } from 'tailwindcss';
 

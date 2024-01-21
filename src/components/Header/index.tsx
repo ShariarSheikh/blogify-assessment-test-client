@@ -24,11 +24,11 @@ const filtersActions: string[] = [
 
 const Header = () => {
   return (
-    <div className="max-h-[148px] w-full border-b border-b-[#F3F4F6] bg-white pt-[24px] pb-[16px] px-[24px]">
-      <div className="flex justify-between items-center mx-auto max-w-[1440px]">
+    <header className="h-[148px] w-full border-b border-b-[#F3F4F6] bg-white pt-[24px] pb-[16px] px-[24px]">
+      <div className="flex h-[48px] justify-between items-center mx-auto w-full max-w-[1440px]">
         <Logo />
         <SearchBar />
-        <div className="flex items-center space-x-4">
+        <div className="flex w-[300px] items-center space-x-4">
           <h2 className="font-medium text-sm">Become a Host</h2>
           <AiOutlineGlobal className="w-[24px] h-[24px]" />
           <Button className="bg-white w-[88px] h-[48px] p-0 rounded-[100px] flex items-center justify-center border border-[#E5E7EB]">
@@ -41,7 +41,7 @@ const Header = () => {
           </Button>
         </div>
       </div>
-      <div className="flex items-center justify-between mx-auto max-w-[1440px] mt-[24px]">
+      <div className="flex h-[48px] items-center justify-between mx-auto max-w-[1440px] mt-[24px]">
         {filtersActions.slice(0, 2).map((action, i) => (
           <Button
             endContent={<MdKeyboardArrowDown />}
@@ -62,7 +62,7 @@ const Header = () => {
           </Button>
         ))}
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -23,10 +23,11 @@ export const hotelsApi = createApi({
 
         // Adjust the date format or structure according to your API requirements
         const params = new URLSearchParams();
-        params.set('location', location);
-        params.set('dates[startDate]', dates.startDate);
-        params.set('dates[endDate]', dates.endDate);
-        params.set('guests', guests.toString());
+
+        if (location) params.set('location', location);
+        if (dates.startDate) params.set('dates[startDate]', dates.startDate);
+        if (dates.endDate) params.set('dates[endDate]', dates.endDate);
+        if (guests) params.set('guests', guests.toString());
 
         return `/search?${params.toString()}`;
       }
