@@ -10,13 +10,23 @@ export interface SearchQuery {
   guests: number;
 }
 
+const baseUrl: string =
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8000'
+    : 'https://blogify-assessment-test-server.onrender.com';
+
 export const hotelsApi = createApi({
   reducerPath: 'hotelsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   endpoints: (builder) => ({
     getAllHotels: builder.query<{ data: DataInterface[] }, void>({
       query: () => '/search'
     }),
+
+    getAllHotelsLocationName: builder.mutation<{ data: string[] }, void>({
+      query: () => '/search/locations'
+    }),
+
     searchHotels: builder.mutation<{ data: DataInterface[] }, SearchQuery>({
       query: (searchQuery) => {
         const { location, dates, guests } = searchQuery;
@@ -35,5 +45,9 @@ export const hotelsApi = createApi({
   })
 });
 
-export const { useGetAllHotelsQuery, useSearchHotelsMutation } = hotelsApi;
+export const {
+  useGetAllHotelsQuery,
+  useSearchHotelsMutation,
+  useGetAllHotelsLocationNameMutation
+} = hotelsApi;
 export default hotelsApi;

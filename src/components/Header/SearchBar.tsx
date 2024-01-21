@@ -1,4 +1,7 @@
-import { useSearchHotelsMutation } from '@/redux/api';
+import {
+  useGetAllHotelsLocationNameMutation,
+  useSearchHotelsMutation
+} from '@/redux/api';
 import { useAppDispatch } from '@/redux/hooks';
 import { updateSearchState } from '@/redux/hotelSlice';
 import { Button, Divider, Spinner } from '@nextui-org/react';
@@ -117,6 +120,9 @@ interface SearchInputBoxProps {
 //------------------------------------------------------------------------------------
 
 const SearchInputBox = (props: SearchInputBoxProps) => {
+  const [getAllHotelName, getAllHotelNameApi] =
+    useGetAllHotelsLocationNameMutation();
+
   const [searchHotel, searchHotelApi] = useSearchHotelsMutation();
 
   const [searchAbleLocations, setSearchAbleLocations] = useState<string[]>([]);
@@ -216,16 +222,6 @@ const SearchInputBox = (props: SearchInputBoxProps) => {
     window.document.body.style.overflow = 'auto';
   }
 
-  const getSearchAbleLocation = async () => {
-    try {
-      const json = await fetch('http://localhost:8000/search/locations');
-      const data = await json.json();
-      setSearchAbleLocations(data.data);
-    } catch (error) {
-      setSearchAbleLocations([]);
-    }
-  };
-
   const formatDate = (date: Date) => {
     // Use Moment.js to format the date
     return moment(date).format('MMM DD, YYYY');
@@ -256,8 +252,14 @@ const SearchInputBox = (props: SearchInputBoxProps) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getSearchAbleLocation();
+    getAllHotelName();
   }, []);
+
+  useEffect(() => {
+    if (getAllHotelNameApi.isLoading) return;
+    const data = getAllHotelNameApi.data?.data ?? [];
+    setSearchAbleLocations(data);
+  }, [getAllHotelNameApi]);
 
   useEffect(() => {
     if (searchHotelApi.isLoading) {
